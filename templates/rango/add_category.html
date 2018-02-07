@@ -6,6 +6,7 @@
 
 {% block body_block %}
 	<div>
+		{% if user.is_authenticated %}
 		<h1>Add a Category</h1>
 		
 			<form id="category_form" method="post" action="{% url 'add_category' %}">
@@ -20,5 +21,8 @@
 				{% endfor %}
 				<input type="submit" name="submit" value="Create Category" />
 			</form>
+		{% else %}
+		You do not have permission to add a category!
+		{% endif %}
 		</div>
 {% endblock %}

@@ -94,7 +94,7 @@ def register(request):
             profile.user = user
 
             if 'picture' in request.FILES:
-                profile.picture = request.FILES.get('pictures', False)
+                profile.picture = request.FILES['picture']
 
             profile.save()
             registered = True
@@ -127,7 +127,7 @@ def user_login(request):
             print("Invalid login details: {0}, {1}".format(username, password))
             return HttpResponse("Invalid login details supplied.")
     else:
-        return render(request, 'rango/user_login.html', {})
+        return render(request, 'rango/login.html', {})
 @login_required
 def restricted(request):
     return render(request, 'rango/restricted.html', {})

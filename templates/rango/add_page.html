@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block body_block %}
+	{% if user.is_authenticated %}
 	{% if category %}
 		<h1>Add a Page to {{category.name}}</h1>
 		
@@ -25,5 +26,8 @@
 	{% else %}
 		A category by this name does not exist.
 		<a href="/rango/">Return to Index</a>
+	{% endif %}
+	{% else %}
+	You do not have permission to add a page!
 	{% endif %}
 {% endblock %}
